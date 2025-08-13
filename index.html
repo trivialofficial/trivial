@@ -3,8 +3,318 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TRIVIAL— Segera hadir. Koleksi kaos kaki premium bergaya streetwear dengan kualitas terbaik." />
-  <title>TRIVIAL — Segera Hadir</title>
+  <title>TRIVIAL — Streetwear & Essentials</title>
+  <meta name="description" content="TRIVIAL. Streetwear-ready premium socks. Limited drops, bold styles." />
+
+  <!-- Ikon sosial (Font Awesome). Boleh diganti SVG lokal kalau mau offline. -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --bg:#000;          --fg:#fff;        --muted:#b9b9b9;
+      --neon:#ffdd00;     --accent:#fff;    --card:#101010;
+      --stroke:#1e1e1e;   --ok:#10b981;     --danger:#ef4444;
+      --brand:#ffdd00;    --link:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--fg); background:var(--bg); -webkit-font-smoothing:antialiased;
+    }
+
+    /* ===== UTIL ===== */
+    .container{width:min(1200px,92%); margin:0 auto}
+    .hidden{display:none}
+    a{color:var(--link); text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* ===== HEADER ===== */
+    .topbar{
+      background:linear-gradient(180deg, rgba(255,221,0,.12), rgba(0,0,0,.5));
+      border-bottom:1px solid var(--stroke);
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(6px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0;
+    }
+    .brand{
+      font-weight:900; letter-spacing:.8px; font-size:20px;
+      padding:8px 12px; border-radius:10px; text-transform:uppercase;
+      border:2px solid rgba(255,221,0,.55);
+      box-shadow:0 0 10px rgba(255,221,0,.35), inset 0 0 10px rgba(255,255,255,.08);
+    }
+    .nav-right{display:flex; align-items:center; gap:12px}
+    .btn, .btn-ghost{
+      display:inline-flex; align-items:center; gap:10px; cursor:pointer; border-radius:12px;
+      padding:10px 14px; font-weight:700; border:1px solid rgba(255,255,255,.15);
+    }
+    .btn{background:linear-gradient(180deg, rgba(255,221,0,.2), rgba(255,255,255,.06)); color:#000}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-ghost{background:#0d0d0d; color:#fff}
+
+    /* Mobile hamburger */
+    .hamb{width:42px; height:42px; border:1px solid rgba(255,255,255,.2); border-radius:10px;
+      display:flex; align-items:center; justify-content:center; cursor:pointer}
+    .hamb i{font-size:18px}
+
+    /* ===== DRAWER (mobile menu) ===== */
+    .drawer-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.6); opacity:0; visibility:hidden;
+      transition:.25s; z-index:90;
+    }
+    .drawer{
+      position:fixed; top:0; right:-100%; height:100%; width:min(86%,420px);
+      background:#fff; color:#111; z-index:99; transition:.35s;
+      box-shadow:-20px 0 50px rgba(0,0,0,.45);
+      display:flex; flex-direction:column;
+    }
+    .drawer.open{right:0}
+    .drawer-backdrop.show{opacity:1; visibility:visible}
+    .drawer header{
+      display:flex; align-items:center; justify-content:space-between; padding:16px;
+      border-bottom:1px solid #eee;
+    }
+    .drawer h3{margin:0; font-size:16px; letter-spacing:.6px}
+    .drawer .close{width:42px; height:42px; border:1px solid #ddd; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; cursor:pointer}
+    .drawer nav a{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px; border-bottom:1px solid #f1f1f1; color:#111; font-weight:700;
+    }
+    .drawer .locale{
+      margin-top:auto; padding:14px 16px; border-top:1px solid #eee; display:flex; gap:10px; align-items:center;
+    }
+    .select{
+      appearance:none; border:1px solid #ddd; padding:10px 12px; border-radius:10px; background:#fff; color:#111;
+    }
+    .drawer .social{
+      display:flex; gap:14px; padding:10px 16px 16px;
+    }
+    .drawer .social a{color:#111; font-size:20px}
+
+    /* ===== HERO ===== */
+    .hero{
+      padding:38px 0 26px; text-align:center; position:relative; overflow:hidden;
+    }
+    .hero h1{
+      margin:6px 0 8px; font-size:clamp(26px, 6vw, 46px); letter-spacing:.4px;
+      text-shadow:0 0 10px var(--neon), 0 0 30px rgba(255,221,0,.35);
+    }
+    .hero p{color:var(--muted); max-width:760px; margin:0 auto 18px}
+    .hero .cta{
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+
+    /* ===== BADGES ===== */
+    .badges{
+      display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px
+    }
+    .badge{
+      border:1px dashed rgba(255,221,0,.6); border-radius:999px; padding:6px 10px; color:#000;
+      background:linear-gradient(180deg, rgba(255,221,0,.9), rgba(255,221,0,.75));
+      font-weight:800; letter-spacing:.4px;
+    }
+
+    /* ===== GRID PRODUK ===== */
+    .section{padding:20px 0 60px}
+    .section h2{font-size:22px; letter-spacing:.4px; margin:10px 0 14px}
+    .grid{
+      display:grid; gap:12px; grid-template-columns:repeat(2, 1fr);
+    }
+    @media(min-width:640px){ .grid{grid-template-columns:repeat(3, 1fr)} }
+    @media(min-width:992px){ .grid{grid-template-columns:repeat(4, 1fr)} }
+
+    .card-p{
+      background:var(--card); border:1px solid var(--stroke); border-radius:14px; overflow:hidden;
+      transition:.2s; display:flex; flex-direction:column
+    }
+    .card-p:hover{transform:translateY(-2px)}
+    .p-img{aspect-ratio:1/1; background:#0d0d0d; display:flex; align-items:center; justify-content:center}
+    .p-img span{opacity:.5}
+    .p-body{padding:12px}
+    .p-title{font-weight:800; margin:0 0 6px}
+    .p-meta{font-size:13px; color:#cfcfcf}
+    .price{margin-top:10px; font-weight:900; color:var(--brand)}
+    .add{margin-top:10px; width:100%; text-align:center; padding:10px; border-radius:10px; border:1px solid rgba(255,221,0,.5); background:linear-gradient(180deg, rgba(255,221,0,.16), rgba(255,255,255,.06)); color:#000; font-weight:800; cursor:pointer}
+
+    /* ===== FOOTER ===== */
+    footer{
+      border-top:1px solid var(--stroke); padding:16px 0 80px; color:#d8d8d8; background:#050505
+    }
+    .footer-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .social a{margin-right:12px; font-size:20px}
+    .locale-inline{display:flex; align-items:center; gap:10px}
+    .locale-inline select{background:#0b0b0b; border:1px solid var(--stroke); color:#fff; padding:8px 10px; border-radius:10px}
+
+    /* ===== CHAT BUBBLE ===== */
+    .chat{
+      position:fixed; right:16px; bottom:18px; z-index:60;
+      display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+    }
+    .chat .bubble{
+      background:#111; color:#fff; border:1px solid var(--stroke); padding:10px 12px; border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35)
+    }
+    .chat .fab{
+      width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(180deg, rgba(255,221,0,.9), rgba(255,221,0,.75)); color:#000; font-size:22px;
+      border:2px solid rgba(255,221,0,.8); cursor:pointer; box-shadow:0 10px 30px rgba(255,221,0,.25)
+    }
+
+    /* ===== SMALL ANIMS ===== */
+    .brand, .btn, .add{transition:.15s ease}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="topbar">
+    <div class="container nav">
+      <div class="hamb" id="openDrawer" aria-label="Buka menu"><i class="fas fa-bars"></i></div>
+      <div class="brand">TRIVIAL</div>
+      <div class="nav-right">
+        <a class="btn-ghost" href="https://x.com/username" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a class="btn-ghost" href="https://instagram.com/username" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="btn-ghost" href="https://tiktok.com/@username" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a class="btn" href="https://wa.me/6281234567890?text=Halo%20TRIVIAL%20Socks" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRAWER -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <header>
+      <h3>Menu</h3>
+      <div class="close" id="closeDrawer" aria-label="Tutup menu"><i class="fas fa-times"></i></div>
+    </header>
+    <nav>
+      <a href="#shop">SHOP <i class="fas fa-chevron-right"></i></a>
+      <a href="#brands">BRANDS <i class="fas fa-chevron-right"></i></a>
+      <a href="#categories">CATEGORIES <i class="fas fa-chevron-right"></i></a>
+      <a href="#music">MUSIC MERCH <i class="fas fa-chevron-right"></i></a>
+      <a href="#journals">JOURNALS <i class="fas fa-chevron-right"></i></a>
+      <a href="#sale" style="color:#dc2626">SALE <i class="fas fa-chevron-right"></i></a>
+    </nav>
+    <div class="locale">
+      <i class="fas fa-globe"></i>
+      <select class="select" aria-label="Negara">
+        <option>INDONESIA</option>
+        <option>GLOBAL</option>
+        <option>SINGAPORE</option>
+      </select>
+    </div>
+    <div class="social">
+      <a href="https://x.com/username" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@username" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </aside>
+
+  <!-- HERO -->
+  <section class="hero container">
+    <h1>Koleksi Kaos Kaki Streetwear — Segera Hadir</h1>
+    <p>Material premium, desain berani, siap menemani setiap langkah. Drop perdana terbatas — jangan ketinggalan.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/6281234567890?text=Masukkan%20saya%20ke%20daftar%20tunggu%20TRIVIAL%20Socks" target="_blank">Daftar Tunggu</a>
+      <a class="btn-ghost" href="#shop">Lihat Katalog</a>
+    </div>
+    <div class="badges">
+      <div class="badge">FAST-DRY</div>
+      <div class="badge">CUSHIONED</div>
+      <div class="badge">LIMITED DROP</div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section id="shop" class="section container">
+    <h2>Produk Unggulan</h2>
+    <div class="grid">
+      <!-- Card contoh — ganti gambar & data -->
+      <article class="card-p">
+        <div class="p-img"><span>640×640</span></div>
+        <div class="p-body">
+          <h3 class="p-title">Core Crew Black</h3>
+          <div class="p-meta">All-day cushioned | Breathable mesh</div>
+          <div class="price">Rp89.000</div>
+          <a class="add" href="https://wa.me/6281234567890?text=Pesan%20Core%20Crew%20Black">Tambah ke Keranjang</a>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="p-img"><span>640×640</span></div>
+        <div class="p-body">
+          <h3 class="p-title">Stripe Athletic Yellow</h3>
+          <div class="p-meta">Sport rib | Arch support</div>
+          <div class="price">Rp99.000</div>
+          <a class="add" href="https://wa.me/6281234567890?text=Pesan%20Stripe%20Athletic%20Yellow">Tambah ke Keranjang</a>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="p-img"><span>640×640</span></div>
+        <div class="p-body">
+          <h3 class="p-title">Low-Cut Everyday White</h3>
+          <div class="p-meta">No-show grip | Soft cotton blend</div>
+          <div class="price">Rp59.000</div>
+          <a class="add" href="https://wa.me/6281234567890?text=Pesan%20Low-Cut%20Everyday%20White">Tambah ke Keranjang</a>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="p-img"><span>640×640</span></div>
+        <div class="p-body">
+          <h3 class="p-title">Performance Ankle Grey</h3>
+          <div class="p-meta">Moisture-wick | Reinforced heel & toe</div>
+          <div class="price">Rp79.000</div>
+          <a class="add" href="https://wa.me/6281234567890?text=Pesan%20Performance%20Ankle%20Grey">Tambah ke Keranjang</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-top">
+      <div>&copy; 2025 TRIVIAL </div>
+      <div class="locale-inline">
+        <i class="fas fa-globe"></i>
+        <select>
+          <option>INDONESIA (IDR)</option>
+          <option>GLOBAL (USD)</option>
+        </select>
+      </div>
+      <div class="social">
+        <a href="https://x.com/username" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://instagram.com/username" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@username" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/6281234567890" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHAT BUBBLE -->
+  <div class="chat">
+    <div class="bubble">Butuh bantuan? Chat kami via WhatsApp.</div>
+    <a class="fab" href="https://wa.me/6281234567890?text=Halo%20TRIVIAL%20Socks" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Drawer logic -->
+  <script>
+    const drawer = document.getElementById('drawer');
+    const backdrop = document.getElementById('backdrop');
+    document.getElementById('openDrawer').onclick = () => {
+      drawer.classList.add('open'); backdrop.classList.add('show'); drawer.setAttribute('aria-hidden','false');
+    };
+    document.getElementById('closeDrawer').onclick = () => {
+      drawer.classList.remove('open'); backdrop.classList.remove('show'); drawer.setAttribute('aria-hidden','true');
+    };
+    backdrop.onclick = () => { drawer.classList.remove('open'); backdrop.classList.remove('show'); };
+  </script>
 
   <!-- Redirect www → non-www -->
   <script>
@@ -12,202 +322,5 @@
       location.replace("https://trivial.id" + location.pathname + location.search + location.hash);
     }
   </script>
-
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <style>
-    :root{
-      --bg:#000000; /* hitam pekat */
-      --fg:#ffffff;
-      --muted:#b5b5b5;
-      --neon:#ffdd00; /* kuning neon */
-      --neon2:#ffffff; /* putih sebagai aksen */
-      --card:#111111;
-      --btn-bg: linear-gradient(180deg, rgba(255,221,0,.18), rgba(255,255,255,.12));
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color:var(--fg);
-      line-height:1.6;
-    }
-    header{
-      position:relative;
-      padding:48px 16px 28px;
-      text-align:center;
-      background: linear-gradient(180deg, rgba(255,221,0,0.15), transparent);
-    }
-    .brand{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:14px;
-      font-weight:800;
-      font-size: clamp(24px, 6vw, 54px);
-      text-transform:uppercase;
-      color:var(--fg);
-      text-shadow:0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon);
-      border:2px solid rgba(255,221,0,.6);
-      box-shadow:0 0 10px rgba(255,221,0,.35),inset 0 0 12px rgba(255,255,255,.18);
-      animation: neonText 3.6s ease-in-out infinite;
-    }
-    .tagline{
-      margin:12px auto 14px;
-      color:var(--muted);
-      max-width:740px;
-      font-size: clamp(14px, 2.4vw, 18px);
-    }
-    .badge{
-      display:inline-block;
-      margin-top:8px;
-      padding:6px 10px;
-      font-weight:700;
-      letter-spacing:.6px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.6);
-      box-shadow: 0 0 10px rgba(255,255,255,.35);
-      animation: pulse 2.8s ease-in-out infinite;
-    }
-    .container{width:min(1100px, 92%); margin: 28px auto 108px;}
-    .card{
-      margin:32px 0;
-      padding:34px 22px;
-      background: var(--card);
-      border-radius:16px;
-      border:2px solid rgba(255,221,0,.32);
-      box-shadow:0 0 10px rgba(255,221,0,.28),inset 0 0 16px rgba(255,255,255,.16);
-      animation: neonBox 4s ease-in-out infinite;
-      text-align:center;
-    }
-    .card h2{font-size:clamp(22px, 3.2vw, 32px); margin-bottom:10px}
-    .lead{color:#f9f9f9; margin:0 auto 16px; max-width:760px; font-size:clamp(15px, 2.3vw, 18px)}
-    .countdown{
-      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
-      margin:14px 0 6px;
-    }
-    .timebox{
-      min-width:86px;
-      padding:12px 10px;
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(255,255,255,.32);
-      border-radius:12px;
-      box-shadow: inset 0 0 10px rgba(255,255,255,.15);
-    }
-    .timebox .num{font-weight:800; font-size:24px}
-    .timebox .lbl{color:#ccc; font-size:12px; letter-spacing:.6px}
-    .btns{margin-top:18px}
-    .button{
-      display:inline-block;
-      background:var(--btn-bg);
-      border:1.5px solid rgba(255,221,0,.75);
-      color:#000;
-      font-weight:700;
-      padding:14px 22px;
-      border-radius:12px;
-      margin:4px 6px;
-      text-decoration:none;
-      box-shadow:0 0 10px rgba(255,221,0,.45),inset 0 0 12px rgba(255,255,255,.22);
-      transition: transform .15s ease, box-shadow .2s ease;
-    }
-    .button:hover{ transform: translateY(-1px) scale(1.02);}
-    .social-links{
-      margin-top:16px;
-      display:flex;
-      justify-content:center;
-      gap:16px;
-    }
-    .social-links a{
-      font-size:22px;
-      color:var(--fg);
-      text-shadow:0 0 6px var(--neon), 0 0 12px var(--neon2);
-      transition: transform .2s ease;
-    }
-    .social-links a:hover{ transform: scale(1.2); }
-
-    footer{
-      position:fixed; left:0; right:0; bottom:0;
-      background: linear-gradient(180deg, rgba(255,221,0,.12), rgba(0,0,0,.85));
-      border-top:1px solid rgba(255,255,255,.25);
-      color:var(--fg);
-      text-align:center; padding:10px 12px;
-    }
-    @keyframes neonText{
-      0%,100%{ text-shadow: 0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon); }
-      50%{ text-shadow: 0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon); }
-    }
-    @keyframes neonBox{
-      0%,100%{ box-shadow: 0 0 10px var(--neon), inset 0 0 16px var(--neon2) }
-      50%{   box-shadow: 0 0 18px var(--neon), inset 0 0 26px var(--neon2) }
-    }
-    @keyframes pulse{ 0%,100%{ box-shadow:0 0 8px rgba(255,255,255,.5) } 50%{ box-shadow:0 0 16px rgba(255,255,255,.8) } }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="brand">TRIVIAL</div>
-    <p class="tagline">Langkah baru dalam dunia streetwear. Kaos kaki yang dirancang untuk gaya dan harian.</p>
-    <div class="badge">SEGERA HADIR</div>
-  </header>
-
-  <div class="container">
-    <section class="card">
-      <h2>Koleksi Perdana</h2>
-      <p class="lead">Material premium, desain berani, dan kenyamanan yang tak tertandingi. Waktunya melangkah ke level berikutnya.</p>
-
-      <div class="countdown" id="countdown">
-        <div class="timebox"><div class="num" id="d">--</div><div class="lbl">HARI</div></div>
-        <div class="timebox"><div class="num" id="h">--</div><div class="lbl">JAM</div></div>
-        <div class="timebox"><div class="num" id="m">--</div><div class="lbl">MENIT</div></div>
-        <div class="timebox"><div class="num" id="s">--</div><div class="lbl">DETIK</div></div>
-      </div>
-
-      <div class="btns">
-        <a class="button" href="https://wa.me/6281234567890?text=Halo%20TRIVIAL%20Socks%2C%20saya%20ingin%20masuk%20daftar%20tunggu">Pesan via WhatsApp</a>
-        <a class="button" href="#follow">Ikuti Kami</a>
-      </div>
-
-      <div class="social-links" id="follow">
-        <a href="https://x.com/username" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@username" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 TRIVIAL SOCKS — Semua Hak Dilindungi</p>
-  </footer>
-
-  <script>
-    const LAUNCH_DATE = "2025-09-15T09:00:00+07:00";
-    const d = document.getElementById("d"),
-          h = document.getElementById("h"),
-          m = document.getElementById("m"),
-          s = document.getElementById("s");
-
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function tick(){
-      const target = new Date(LAUNCH_DATE).getTime();
-      const now = Date.now();
-      let diff = Math.max(0, target - now);
-      const days  = Math.floor(diff / (1000*60*60*24)); diff -= days*24*60*60*1000;
-      const hours = Math.floor(diff / (1000*60*60));    diff -= hours*60*60*1000;
-      const mins  = Math.floor(diff / (1000*60));       diff -= mins*60*1000;
-      const secs  = Math.floor(diff / 1000);
-      d.textContent = pad(days);
-      h.textContent = pad(hours);
-      m.textContent = pad(mins);
-      s.textContent = pad(secs);
-    }
-    tick();
-    setInterval(tick, 1000);
-  </script>
-
 </body>
 </html>
-

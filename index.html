@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TRIVIAL — Segera hadir. Daftar tunggu untuk penawaran eksklusif peluncuran." />
-  <title>TRIVIAL — Segera Hadir</title>
+  <meta name="description" content="TRIVIAL Socks — Segera hadir. Koleksi kaos kaki premium bergaya streetwear dengan kualitas terbaik." />
+  <title>TRIVIAL Socks — Segera Hadir</title>
 
   <!-- Redirect www → non-www -->
   <script>
@@ -13,57 +13,45 @@
     }
   </script>
 
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
     :root{
-      --bg:#090d12;
-      --fg:#eaf2ff;
-      --muted:#a7b8cc;
-      --neon:#ff0066;      /* neon utama (fuchsia) */
-      --neon2:#00ffaa;     /* neon aksen (toska) */
-      --card:#0e1521;
-      --link:#eaf2ff;
-      --btn-bg: linear-gradient(180deg, rgba(255,0,102,.16), rgba(0,255,170,.14));
+      --bg:#000000; /* hitam pekat */
+      --fg:#ffffff;
+      --muted:#b5b5b5;
+      --neon:#ffdd00; /* kuning neon */
+      --neon2:#ffffff; /* putih sebagai aksen */
+      --card:#111111;
+      --btn-bg: linear-gradient(180deg, rgba(255,221,0,.18), rgba(255,255,255,.12));
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 8% -10%, rgba(255,0,102,0.16), transparent 60%),
-        radial-gradient(1000px 800px at 110% 10%, rgba(0,255,170,0.14), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color:var(--fg);
       line-height:1.6;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-
-    /* ===== HEADER / HERO ===== */
     header{
       position:relative;
       padding:48px 16px 28px;
       text-align:center;
-      background: linear-gradient(180deg, rgba(0,0,0,0.28), transparent);
-      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,221,0,0.15), transparent);
     }
     .brand{
       display:inline-block;
       padding:10px 16px;
       border-radius:14px;
-      letter-spacing:.8px;
       font-weight:800;
       font-size: clamp(24px, 6vw, 54px);
       text-transform:uppercase;
-      color:#fff;
-      text-shadow:
-        0 0 6px var(--neon),
-        0 0 18px var(--neon2),
-        0 0 36px var(--neon);
-      border:2px solid rgba(255,0,102,.45);
-      box-shadow:
-        0 0 10px rgba(255,0,102,.35),
-        inset 0 0 12px rgba(0,255,170,.18);
+      color:var(--fg);
+      text-shadow:0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon);
+      border:2px solid rgba(255,221,0,.6);
+      box-shadow:0 0 10px rgba(255,221,0,.35),inset 0 0 12px rgba(255,255,255,.18);
       animation: neonText 3.6s ease-in-out infinite;
     }
     .tagline{
@@ -79,57 +67,23 @@
       font-weight:700;
       letter-spacing:.6px;
       border-radius:999px;
-      border:1px solid rgba(0,255,170,.6);
-      box-shadow: 0 0 10px rgba(0,255,170,.35);
-      text-shadow: 0 0 6px var(--neon2);
+      border:1px solid rgba(255,255,255,.6);
+      box-shadow: 0 0 10px rgba(255,255,255,.35);
       animation: pulse 2.8s ease-in-out infinite;
     }
-    header::after{
-      content:"";
-      position:absolute; left:5%; right:5%; bottom:8px; height:2px;
-      background:
-        linear-gradient(90deg, transparent, var(--neon) 20%, var(--neon2) 50%, var(--neon) 80%, transparent);
-      box-shadow:
-        0 0 8px var(--neon),
-        0 0 18px var(--neon2),
-        0 0 36px var(--neon);
-      filter: blur(.25px);
-      animation: scan 6s linear infinite;
-    }
-
     .container{width:min(1100px, 92%); margin: 28px auto 108px;}
-
-    /* ===== CARD NEON ===== */
     .card{
-      position:relative;
       margin:32px 0;
       padding:34px 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)) , var(--card);
+      background: var(--card);
       border-radius:16px;
-      border:2px solid rgba(255,0,102,.32);
-      box-shadow:
-        0 0 10px rgba(255,0,102,.28),
-        inset 0 0 16px rgba(0,255,170,.16);
-      overflow:hidden;
-      text-align:center;
+      border:2px solid rgba(255,221,0,.32);
+      box-shadow:0 0 10px rgba(255,221,0,.28),inset 0 0 16px rgba(255,255,255,.16);
       animation: neonBox 4s ease-in-out infinite;
+      text-align:center;
     }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px; border-radius:14px;
-      background:
-        conic-gradient(from 0deg, transparent 0 70%, var(--neon) 76% 82%, transparent 85% 100%);
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      padding:2px;
-      animation: sweep 8s linear infinite;
-      opacity:.8;
-    }
-    .card h2{font-size:clamp(22px, 3.2vw, 32px); margin:0 0 10px}
-    .lead{color:#ffeef5; margin:0 auto 16px; max-width:760px; font-size:clamp(15px, 2.3vw, 18px)}
-
-    /* ===== COUNTDOWN ===== */
+    .card h2{font-size:clamp(22px, 3.2vw, 32px); margin-bottom:10px}
+    .lead{color:#f9f9f9; margin:0 auto 16px; max-width:760px; font-size:clamp(15px, 2.3vw, 18px)}
     .countdown{
       display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
       margin:14px 0 6px;
@@ -138,104 +92,73 @@
       min-width:86px;
       padding:12px 10px;
       background: rgba(255,255,255,.02);
-      border:1px solid rgba(0,255,170,.32);
+      border:1px solid rgba(255,255,255,.32);
       border-radius:12px;
-      box-shadow: inset 0 0 10px rgba(0,255,170,.15);
+      box-shadow: inset 0 0 10px rgba(255,255,255,.15);
     }
     .timebox .num{font-weight:800; font-size:24px}
-    .timebox .lbl{color:#cfe0ff; font-size:12px; letter-spacing:.6px}
-
-    /* ===== BUTTONS ===== */
+    .timebox .lbl{color:#ccc; font-size:12px; letter-spacing:.6px}
     .btns{margin-top:18px}
     .button{
       display:inline-block;
       background:var(--btn-bg);
-      border:1.5px solid rgba(255,0,102,.65);
-      color:#fff; text-decoration:none; font-weight:700;
-      padding:14px 22px; border-radius:12px;
-      letter-spacing:.3px;
-      box-shadow:
-        0 0 10px rgba(255,0,102,.45),
-        inset 0 0 12px rgba(0,255,170,.22);
-      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-      position:relative; isolation:isolate; margin: 4px 6px;
-    }
-    .button::after{
-      content:"";
-      position:absolute; inset:-1.5px; border-radius:12px;
-      border:1.5px solid rgba(0,255,170,.45);
-      filter: blur(2px); opacity:.85;
-    }
-    .button:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 0 16px rgba(255,0,102,.75), inset 0 0 16px rgba(0,255,170,.32); }
-    .button:active{ transform: translateY(0) scale(.995); filter:brightness(1.05); }
-
-    /* ===== LIST TEASER ===== */
-    .teaser{
-      display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:14px; margin-top:18px;
-    }
-    .chip{
-      padding:12px 14px;
-      border:1px solid rgba(255,0,102,.25);
+      border:1.5px solid rgba(255,221,0,.75);
+      color:#000;
+      font-weight:700;
+      padding:14px 22px;
       border-radius:12px;
-      background: rgba(255,255,255,.02);
-      color:#ffeef5;
-      text-align:left;
+      margin:4px 6px;
+      text-decoration:none;
+      box-shadow:0 0 10px rgba(255,221,0,.45),inset 0 0 12px rgba(255,255,255,.22);
+      transition: transform .15s ease, box-shadow .2s ease;
     }
-    .chip strong{display:block; margin-bottom:4px}
+    .button:hover{ transform: translateY(-1px) scale(1.02);}
+    .social-links{
+      margin-top:16px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+    }
+    .social-links a{
+      font-size:22px;
+      color:var(--fg);
+      text-shadow:0 0 6px var(--neon), 0 0 12px var(--neon2);
+      transition: transform .2s ease;
+    }
+    .social-links a:hover{ transform: scale(1.2); }
 
-    /* ===== FOOTER ===== */
     footer{
       position:fixed; left:0; right:0; bottom:0;
-      background: linear-gradient(180deg, rgba(255,0,102,.12), rgba(0,0,0,.55));
-      border-top:1px solid rgba(0,255,170,.25);
-      color:#ffeef5;
+      background: linear-gradient(180deg, rgba(255,221,0,.12), rgba(0,0,0,.85));
+      border-top:1px solid rgba(255,255,255,.25);
+      color:var(--fg);
       text-align:center; padding:10px 12px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 -6px 18px rgba(255,0,102,.12);
     }
-    footer a{ color:var(--link); text-decoration:none; border-bottom:1px dotted rgba(234,242,255,.5) }
-    footer a:hover{ opacity:.9 }
-
-    /* ===== ANIMATIONS ===== */
     @keyframes neonText{
-      0%,100%{ text-shadow: 0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon); opacity:1 }
-      45%{ text-shadow: 0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon); opacity:.97 }
-      50%{ opacity:.92 }
-      55%{ opacity:1 }
+      0%,100%{ text-shadow: 0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon); }
+      50%{ text-shadow: 0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon); }
     }
     @keyframes neonBox{
       0%,100%{ box-shadow: 0 0 10px var(--neon), inset 0 0 16px var(--neon2) }
       50%{   box-shadow: 0 0 18px var(--neon), inset 0 0 26px var(--neon2) }
     }
-    @keyframes sweep{ to{ transform: rotate(360deg) } }
-    @keyframes scan{ 0%{ transform: translateX(-20%) } 100%{ transform: translateX(20%) } }
-    @keyframes pulse{ 0%,100%{ box-shadow:0 0 8px rgba(0,255,170,.5) } 50%{ box-shadow:0 0 16px rgba(0,255,170,.8) } }
-
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none!important; transition:none!important}
-    }
+    @keyframes pulse{ 0%,100%{ box-shadow:0 0 8px rgba(255,255,255,.5) } 50%{ box-shadow:0 0 16px rgba(255,255,255,.8) } }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand">TRIVIAL</div>
-    <p class="tagline">Sesuatu yang baru sedang kami ramu — dibuat sederhana, cepat, dan terasa <em>bernilai</em> sejak detik pertama kamu mencobanya.</p>
+    <div class="brand">TRIVIAL SOCKS</div>
+    <p class="tagline">Langkah baru dalam dunia streetwear. Kaos kaki yang dirancang untuk gaya dan performa.</p>
     <div class="badge">SEGERA HADIR</div>
   </header>
 
   <div class="container">
-    <!-- Kartu utama: teaser + countdown -->
-    <section class="card" aria-labelledby="judul-teaser">
-      <h2 id="judul-teaser">Jadi yang Pertama Mengetahui</h2>
-      <p class="lead">
-        Kami belum bisa buka semuanya. Tapi bayangkan pengalaman yang lebih rapi, lebih cepat,
-        dan terasa personal. Biarkan kami kirim undangan eksklusif saat pintu dibuka.
-      </p>
+    <section class="card">
+      <h2>Koleksi Perdana</h2>
+      <p class="lead">Material premium, desain berani, dan kenyamanan yang tak tertandingi. Waktunya melangkah ke level berikutnya.</p>
 
-      <!-- Countdown: atur tanggal target di LAUNCH_DATE -->
-      <div class="countdown" id="countdown" aria-label="Hitung mundur peluncuran" title="Countdown peluncuran">
+      <div class="countdown" id="countdown">
         <div class="timebox"><div class="num" id="d">--</div><div class="lbl">HARI</div></div>
         <div class="timebox"><div class="num" id="h">--</div><div class="lbl">JAM</div></div>
         <div class="timebox"><div class="num" id="m">--</div><div class="lbl">MENIT</div></div>
@@ -243,62 +166,39 @@
       </div>
 
       <div class="btns">
-        <!-- Ganti link berikut sesuai kebutuhanmu -->
-        <a class="button" href="mailto:hi@trivial.id?subject=Daftar%20Tunggu%20TRIVIAL&body=Halo%20TRIVIAL%2C%20saya%20ingin%20masuk%20daftar%20tunggu.%20Nama%3A%20___%20%2F%20Kontak%3A%20___">Masuk Daftar Tunggu</a>
-        <a class="button" href="#sneak-peek">Lihat Cuplikan Fitur</a>
+        <a class="button" href="https://wa.me/6281234567890?text=Halo%20TRIVIAL%20Socks%2C%20saya%20ingin%20masuk%20daftar%20tunggu">Pesan via WhatsApp</a>
+        <a class="button" href="#follow">Ikuti Kami</a>
       </div>
 
-      <!-- Teaser poin -->
-      <div id="sneak-peek" class="teaser" style="margin-top:22px">
-        <div class="chip"><strong>Instan & Rapi</strong>Alur yang memotong langkah-langkah tidak penting.</div>
-        <div class="chip"><strong>Fokus pada Kamu</strong>Rekomendasi terasa pas — bukan sekadar ramai.</div>
-        <div class="chip"><strong>Ringan & Cepat</strong>Didesain agar terasa gesit bahkan di koneksi pas-pasan.</div>
-        <div class="chip"><strong>Kontrol Penuh</strong>Kamu memutuskan, kami mempermudah.</div>
-      </div>
-    </section>
-
-    <!-- Kartu kedua: penawaran eksklusif -->
-    <section class="card" aria-labelledby="judul-offer">
-      <h2 id="judul-offer">Undangan Rilisan Terbatas</h2>
-      <p class="lead">
-        Gelombang pertama akan mendapat <strong>akses lebih awal</strong>, <strong>hadiah peluncuran</strong>,
-        dan <strong>harga khusus</strong>. Kuota terbatas.
-      </p>
-      <div class="btns">
-        <a class="button" href="mailto:trivialofficial.id@gmail.com
-        subject=Whitelist%20Peluncuran%20TRIVIAL&body=Halo%2C%20tambahkan%20saya%20ke%20whitelist%20rilisan%20terbatas.%20Nama%3A%20___%20%2F%20Kontak%3A%20___">Whitelist Saya</a>
-        <a class="button" href="https://trivial.id/checkout">Beli Saat Rilis</a>
+      <div class="social-links" id="follow">
+        <a href="https://x.com/username" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@username" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </section>
   </div>
 
   <footer>
-    <p>&copy; 2025 TRIVIAL. <a href="mailto:trivialofficial.id@gmail.com">Hubungi kami</a></p>
+    <p>&copy; 2025 TRIVIAL SOCKS — Semua Hak Dilindungi</p>
   </footer>
 
-  <!-- ===== JS Countdown (ubah tanggal di sini) ===== -->
   <script>
-    // Atur tanggal rilis di sini (WIB/Jakarta = UTC+7).
-    // Contoh: 15 September 2025 pukul 09:00 WIB.
     const LAUNCH_DATE = "2025-09-15T09:00:00+07:00";
-
     const d = document.getElementById("d"),
           h = document.getElementById("h"),
           m = document.getElementById("m"),
           s = document.getElementById("s");
 
     function pad(n){ return String(n).padStart(2,"0"); }
-
     function tick(){
       const target = new Date(LAUNCH_DATE).getTime();
       const now = Date.now();
       let diff = Math.max(0, target - now);
-
       const days  = Math.floor(diff / (1000*60*60*24)); diff -= days*24*60*60*1000;
       const hours = Math.floor(diff / (1000*60*60));    diff -= hours*60*60*1000;
       const mins  = Math.floor(diff / (1000*60));       diff -= mins*60*1000;
       const secs  = Math.floor(diff / 1000);
-
       d.textContent = pad(days);
       h.textContent = pad(hours);
       m.textContent = pad(mins);

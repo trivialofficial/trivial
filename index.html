@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dapatkan penawaran eksklusif dari TRIVIAL, brand yang menghadirkan solusi inovatif untuk kebutuhan Anda." />
-  <title>TRIVIAL - Penawaran Eksklusif</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TRIVIAL — Segera hadir. Daftar tunggu untuk penawaran eksklusif peluncuran." />
+  <title>TRIVIAL — Segera Hadir</title>
 
   <!-- Redirect www → non-www -->
   <script>
@@ -15,13 +15,14 @@
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --fg:#e6f1ff;
-      --muted:#9db2c7;
-      --neon:#ff0066;      /* warna neon utama */
-      --neon2:#00ffaa;     /* aksen neon kedua */
-      --card:#0f1622;
-      --btn:#111a28;
+      --bg:#090d12;
+      --fg:#eaf2ff;
+      --muted:#a7b8cc;
+      --neon:#ff0066;      /* neon utama (fuchsia) */
+      --neon2:#00ffaa;     /* neon aksen (toska) */
+      --card:#0e1521;
+      --link:#eaf2ff;
+      --btn-bg: linear-gradient(180deg, rgba(255,0,102,.16), rgba(0,255,170,.14));
     }
 
     *{box-sizing:border-box}
@@ -30,34 +31,58 @@
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(255,0,102,0.18), transparent 60%),
-        radial-gradient(1000px 800px at 110% 10%, rgba(0,255,170,0.16), transparent 60%),
+        radial-gradient(1200px 600px at 8% -10%, rgba(255,0,102,0.16), transparent 60%),
+        radial-gradient(1000px 800px at 110% 10%, rgba(0,255,170,0.14), transparent 60%),
         var(--bg);
       color:var(--fg);
       line-height:1.6;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
 
+    /* ===== HEADER / HERO ===== */
     header{
       position:relative;
-      padding:32px 16px 28px;
+      padding:48px 16px 28px;
       text-align:center;
-      background: linear-gradient(180deg, rgba(0,0,0,0.35), transparent);
+      background: linear-gradient(180deg, rgba(0,0,0,0.28), transparent);
       overflow:hidden;
     }
-    header h1{
-      margin:0 0 6px;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing:.5px;
+    .brand{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:14px;
+      letter-spacing:.8px;
+      font-weight:800;
+      font-size: clamp(24px, 6vw, 54px);
+      text-transform:uppercase;
+      color:#fff;
       text-shadow:
         0 0 6px var(--neon),
         0 0 18px var(--neon2),
         0 0 36px var(--neon);
-      animation: neonText 3.5s ease-in-out infinite;
+      border:2px solid rgba(255,0,102,.45);
+      box-shadow:
+        0 0 10px rgba(255,0,102,.35),
+        inset 0 0 12px rgba(0,255,170,.18);
+      animation: neonText 3.6s ease-in-out infinite;
     }
-    header p{
-      margin:0;
+    .tagline{
+      margin:12px auto 14px;
       color:var(--muted);
+      max-width:740px;
       font-size: clamp(14px, 2.4vw, 18px);
+    }
+    .badge{
+      display:inline-block;
+      margin-top:8px;
+      padding:6px 10px;
+      font-weight:700;
+      letter-spacing:.6px;
+      border-radius:999px;
+      border:1px solid rgba(0,255,170,.6);
+      box-shadow: 0 0 10px rgba(0,255,170,.35);
+      text-shadow: 0 0 6px var(--neon2);
+      animation: pulse 2.8s ease-in-out infinite;
     }
     header::after{
       content:"";
@@ -68,91 +93,111 @@
         0 0 8px var(--neon),
         0 0 18px var(--neon2),
         0 0 36px var(--neon);
-      filter: blur(.2px);
+      filter: blur(.25px);
       animation: scan 6s linear infinite;
     }
 
-    .container{width:min(1100px, 92%); margin: 32px auto 96px;}
+    .container{width:min(1100px, 92%); margin: 28px auto 108px;}
 
-    .offer{
+    /* ===== CARD NEON ===== */
+    .card{
       position:relative;
-      margin:36px 0;
-      padding:42px 28px;
+      margin:32px 0;
+      padding:34px 22px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)) , var(--card);
       border-radius:16px;
-      border:2px solid rgba(255,0,102,.35);
+      border:2px solid rgba(255,0,102,.32);
       box-shadow:
-        0 0 12px rgba(255,0,102,.35),
-        inset 0 0 18px rgba(0,255,170,.18);
-      animation: neonBox 4s ease-in-out infinite;
+        0 0 10px rgba(255,0,102,.28),
+        inset 0 0 16px rgba(0,255,170,.16);
       overflow:hidden;
       text-align:center;
+      animation: neonBox 4s ease-in-out infinite;
     }
-    .offer::before, .offer::after{
+    .card::before{
       content:"";
-      position:absolute; inset:-2px;
-      border-radius:14px;
-      pointer-events:none;
-    }
-    .offer::before{
+      position:absolute; inset:-2px; border-radius:14px;
       background:
-        conic-gradient(from 0deg, transparent 0 70%, var(--neon) 75% 80%, transparent 85% 100%);
+        conic-gradient(from 0deg, transparent 0 70%, var(--neon) 76% 82%, transparent 85% 100%);
       -webkit-mask:
         linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor; mask-composite: exclude;
       padding:2px;
       animation: sweep 8s linear infinite;
+      opacity:.8;
     }
-    .offer::after{
-      background: radial-gradient(200px 40px at 50% -10%, rgba(255,0,102,.25), transparent 70%);
-      filter: blur(8px);
-      opacity:.65;
-      animation: shimmer 5.5s ease-in-out infinite;
+    .card h2{font-size:clamp(22px, 3.2vw, 32px); margin:0 0 10px}
+    .lead{color:#ffeef5; margin:0 auto 16px; max-width:760px; font-size:clamp(15px, 2.3vw, 18px)}
+
+    /* ===== COUNTDOWN ===== */
+    .countdown{
+      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+      margin:14px 0 6px;
     }
+    .timebox{
+      min-width:86px;
+      padding:12px 10px;
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(0,255,170,.32);
+      border-radius:12px;
+      box-shadow: inset 0 0 10px rgba(0,255,170,.15);
+    }
+    .timebox .num{font-weight:800; font-size:24px}
+    .timebox .lbl{color:#cfe0ff; font-size:12px; letter-spacing:.6px}
 
-    .offer h2{font-size:clamp(22px, 3.2vw, 32px); margin:0 0 14px}
-    .offer p{color:#ffeef5; margin:0 0 22px; font-size:clamp(15px, 2.3vw, 18px)}
-
+    /* ===== BUTTONS ===== */
+    .btns{margin-top:18px}
     .button{
       display:inline-block;
-      background:linear-gradient(180deg, rgba(255,0,102,.12), rgba(0,255,170,.12));
-      border:1.5px solid rgba(255,0,102,.7);
-      color:#fff; text-decoration:none; font-weight:600;
-      padding:14px 26px; border-radius:12px;
+      background:var(--btn-bg);
+      border:1.5px solid rgba(255,0,102,.65);
+      color:#fff; text-decoration:none; font-weight:700;
+      padding:14px 22px; border-radius:12px;
       letter-spacing:.3px;
       box-shadow:
-        0 0 10px rgba(255,0,102,.55),
-        inset 0 0 12px rgba(0,255,170,.28);
+        0 0 10px rgba(255,0,102,.45),
+        inset 0 0 12px rgba(0,255,170,.22);
       transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-      position:relative;
-      isolation:isolate;
+      position:relative; isolation:isolate; margin: 4px 6px;
     }
     .button::after{
       content:"";
       position:absolute; inset:-1.5px; border-radius:12px;
-      border:1.5px solid rgba(0,255,170,.55);
-      filter: blur(2px);
-      opacity:.8;
+      border:1.5px solid rgba(0,255,170,.45);
+      filter: blur(2px); opacity:.85;
     }
-    .button:hover{
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 16px rgba(255,0,102,.75), inset 0 0 16px rgba(0,255,170,.35);
-    }
-    .button:active{
-      transform: translateY(0) scale(.995);
-      filter:brightness(1.05);
-    }
+    .button:hover{ transform: translateY(-1px) scale(1.02); box-shadow: 0 0 16px rgba(255,0,102,.75), inset 0 0 16px rgba(0,255,170,.32); }
+    .button:active{ transform: translateY(0) scale(.995); filter:brightness(1.05); }
 
+    /* ===== LIST TEASER ===== */
+    .teaser{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:14px; margin-top:18px;
+    }
+    .chip{
+      padding:12px 14px;
+      border:1px solid rgba(255,0,102,.25);
+      border-radius:12px;
+      background: rgba(255,255,255,.02);
+      color:#ffeef5;
+      text-align:left;
+    }
+    .chip strong{display:block; margin-bottom:4px}
+
+    /* ===== FOOTER ===== */
     footer{
       position:fixed; left:0; right:0; bottom:0;
-      background: linear-gradient(180deg, rgba(255,0,102,.15), rgba(0,0,0,.55));
+      background: linear-gradient(180deg, rgba(255,0,102,.12), rgba(0,0,0,.55));
       border-top:1px solid rgba(0,255,170,.25);
       color:#ffeef5;
       text-align:center; padding:10px 12px;
       backdrop-filter: blur(6px);
       box-shadow: 0 -6px 18px rgba(255,0,102,.12);
     }
+    footer a{ color:var(--link); text-decoration:none; border-bottom:1px dotted rgba(234,242,255,.5) }
+    footer a:hover{ opacity:.9 }
 
+    /* ===== ANIMATIONS ===== */
     @keyframes neonText{
       0%,100%{ text-shadow: 0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon); opacity:1 }
       45%{ text-shadow: 0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon); opacity:.97 }
@@ -160,18 +205,12 @@
       55%{ opacity:1 }
     }
     @keyframes neonBox{
-      0%,100%{ box-shadow: 0 0 12px var(--neon), inset 0 0 18px var(--neon2) }
-      50%{   box-shadow: 0 0 20px var(--neon), inset 0 0 28px var(--neon2) }
+      0%,100%{ box-shadow: 0 0 10px var(--neon), inset 0 0 16px var(--neon2) }
+      50%{   box-shadow: 0 0 18px var(--neon), inset 0 0 26px var(--neon2) }
     }
     @keyframes sweep{ to{ transform: rotate(360deg) } }
-    @keyframes shimmer{
-      0%,100%{ transform: translateY(0); opacity:.55 }
-      50%{    transform: translateY(6px); opacity:.8 }
-    }
-    @keyframes scan{
-      0%{ transform: translateX(-20%) }
-      100%{ transform: translateX(20%) }
-    }
+    @keyframes scan{ 0%{ transform: translateX(-20%) } 100%{ transform: translateX(20%) } }
+    @keyframes pulse{ 0%,100%{ box-shadow:0 0 8px rgba(0,255,170,.5) } 50%{ box-shadow:0 0 16px rgba(0,255,170,.8) } }
 
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important; transition:none!important}
@@ -181,27 +220,93 @@
 <body>
 
   <header>
-    <h1>Selamat Datang di TRIVIAL</h1>
-    <p>Penawaran eksklusif hanya untuk Anda!</p>
+    <div class="brand">TRIVIAL</div>
+    <p class="tagline">Sesuatu yang baru sedang kami ramu — dibuat sederhana, cepat, dan terasa <em>bernilai</em> sejak detik pertama kamu mencobanya.</p>
+    <div class="badge">SEGERA HADIR</div>
   </header>
 
   <div class="container">
-    <section class="offer">
-      <h2>Penawaran Spesial TRIVIAL!</h2>
-      <p>Dapatkan produk terbaik kami dengan diskon hingga 50% hanya di bulan ini. Jangan lewatkan kesempatan ini!</p>
-      <a href="#cta" class="button">Ambil Penawaran Ini</a>
+    <!-- Kartu utama: teaser + countdown -->
+    <section class="card" aria-labelledby="judul-teaser">
+      <h2 id="judul-teaser">Jadi yang Pertama Mengetahui</h2>
+      <p class="lead">
+        Kami belum bisa buka semuanya. Tapi bayangkan pengalaman yang lebih rapi, lebih cepat,
+        dan terasa personal. Biarkan kami kirim undangan eksklusif saat pintu dibuka.
+      </p>
+
+      <!-- Countdown: atur tanggal target di LAUNCH_DATE -->
+      <div class="countdown" id="countdown" aria-label="Hitung mundur peluncuran" title="Countdown peluncuran">
+        <div class="timebox"><div class="num" id="d">--</div><div class="lbl">HARI</div></div>
+        <div class="timebox"><div class="num" id="h">--</div><div class="lbl">JAM</div></div>
+        <div class="timebox"><div class="num" id="m">--</div><div class="lbl">MENIT</div></div>
+        <div class="timebox"><div class="num" id="s">--</div><div class="lbl">DETIK</div></div>
+      </div>
+
+      <div class="btns">
+        <!-- Ganti link berikut sesuai kebutuhanmu -->
+        <a class="button" href="mailto:hi@trivial.id?subject=Daftar%20Tunggu%20TRIVIAL&body=Halo%20TRIVIAL%2C%20saya%20ingin%20masuk%20daftar%20tunggu.%20Nama%3A%20___%20%2F%20Kontak%3A%20___">Masuk Daftar Tunggu</a>
+        <a class="button" href="#sneak-peek">Lihat Cuplikan Fitur</a>
+      </div>
+
+      <!-- Teaser poin -->
+      <div id="sneak-peek" class="teaser" style="margin-top:22px">
+        <div class="chip"><strong>Instan & Rapi</strong>Alur yang memotong langkah-langkah tidak penting.</div>
+        <div class="chip"><strong>Fokus pada Kamu</strong>Rekomendasi terasa pas — bukan sekadar ramai.</div>
+        <div class="chip"><strong>Ringan & Cepat</strong>Didesain agar terasa gesit bahkan di koneksi pas-pasan.</div>
+        <div class="chip"><strong>Kontrol Penuh</strong>Kamu memutuskan, kami mempermudah.</div>
+      </div>
     </section>
 
-    <section id="cta" class="offer">
-      <h2>Jangan Lewatkan Kesempatan Ini!</h2>
-      <p>Segera klaim penawaran Anda dan dapatkan produk TRIVIAL dengan harga terbaik.</p>
-      <a href="https://trivial.id/checkout" class="button">Beli Sekarang</a>
+    <!-- Kartu kedua: penawaran eksklusif -->
+    <section class="card" aria-labelledby="judul-offer">
+      <h2 id="judul-offer">Undangan Rilisan Terbatas</h2>
+      <p class="lead">
+        Gelombang pertama akan mendapat <strong>akses lebih awal</strong>, <strong>hadiah peluncuran</strong>,
+        dan <strong>harga khusus</strong>. Kuota terbatas.
+      </p>
+      <div class="btns">
+        <a class="button" href="mailto:trivialofficial.id@gmail.com
+        subject=Whitelist%20Peluncuran%20TRIVIAL&body=Halo%2C%20tambahkan%20saya%20ke%20whitelist%20rilisan%20terbatas.%20Nama%3A%20___%20%2F%20Kontak%3A%20___">Whitelist Saya</a>
+        <a class="button" href="https://trivial.id/checkout">Beli Saat Rilis</a>
+      </div>
     </section>
   </div>
 
   <footer>
-    <p>&copy; 2025 TRIVIAL. Semua hak cipta dilindungi.</p>
+    <p>&copy; 2025 TRIVIAL. <a href="mailto:trivialofficial.id@gmail.com">Hubungi kami</a></p>
   </footer>
+
+  <!-- ===== JS Countdown (ubah tanggal di sini) ===== -->
+  <script>
+    // Atur tanggal rilis di sini (WIB/Jakarta = UTC+7).
+    // Contoh: 15 September 2025 pukul 09:00 WIB.
+    const LAUNCH_DATE = "2025-09-15T09:00:00+07:00";
+
+    const d = document.getElementById("d"),
+          h = document.getElementById("h"),
+          m = document.getElementById("m"),
+          s = document.getElementById("s");
+
+    function pad(n){ return String(n).padStart(2,"0"); }
+
+    function tick(){
+      const target = new Date(LAUNCH_DATE).getTime();
+      const now = Date.now();
+      let diff = Math.max(0, target - now);
+
+      const days  = Math.floor(diff / (1000*60*60*24)); diff -= days*24*60*60*1000;
+      const hours = Math.floor(diff / (1000*60*60));    diff -= hours*60*60*1000;
+      const mins  = Math.floor(diff / (1000*60));       diff -= mins*60*1000;
+      const secs  = Math.floor(diff / 1000);
+
+      d.textContent = pad(days);
+      h.textContent = pad(hours);
+      m.textContent = pad(mins);
+      s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
 
 </body>
 </html>

@@ -18,130 +18,104 @@
 
   <style>
     :root{
-      --bg:#000000; /* hitam pekat */
-      --fg:#ffffff;
-      --muted:#b5b5b5;
-      --neon:#ffdd00; /* kuning neon */
-      --neon2:#ffffff; /* putih sebagai aksen */
-      --card:#111111;
-      --btn-bg: linear-gradient(180deg, rgba(255,221,0,.18), rgba(255,255,255,.12));
+      --bg:#000000; --fg:#ffffff; --muted:#b5b5b5;
+      --neon:#ffdd00; --neon2:#ffffff;
+      --card:#111111; --btn-bg: linear-gradient(180deg, rgba(255,221,0,.18), rgba(255,255,255,.12));
+      --stroke:#1e1e1e;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color:var(--fg);
-      line-height:1.6;
+      margin:0; font-family: system-ui,-apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg); color:var(--fg); line-height:1.6;
     }
     header{
-      position:relative;
-      padding:48px 16px 28px;
-      text-align:center;
+      position:relative; padding:48px 16px 28px; text-align:center;
       background: linear-gradient(180deg, rgba(255,221,0,0.15), transparent);
     }
     .brand{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:14px;
-      font-weight:800;
-      font-size: clamp(24px, 6vw, 54px);
-      text-transform:uppercase;
-      color:var(--fg);
+      display:inline-block; padding:10px 16px; border-radius:14px; font-weight:800;
+      font-size:clamp(24px, 6vw, 54px); text-transform:uppercase; color:var(--fg);
       text-shadow:0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon);
       border:2px solid rgba(255,221,0,.6);
-      box-shadow:0 0 10px rgba(255,221,0,.35),inset 0 0 12px rgba(255,255,255,.18);
+      box-shadow:0 0 10px rgba(255,221,0,.35), inset 0 0 12px rgba(255,255,255,.18);
       animation: neonText 3.6s ease-in-out infinite;
     }
-    .tagline{
-      margin:12px auto 14px;
-      color:var(--muted);
-      max-width:740px;
-      font-size: clamp(14px, 2.4vw, 18px);
-    }
+    .tagline{ margin:12px auto 14px; color:var(--muted); max-width:740px; font-size:clamp(14px,2.4vw,18px) }
     .badge{
-      display:inline-block;
-      margin-top:8px;
-      padding:6px 10px;
-      font-weight:700;
-      letter-spacing:.6px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.6);
-      box-shadow: 0 0 10px rgba(255,255,255,.35);
-      animation: pulse 2.8s ease-in-out infinite;
+      display:inline-block; margin-top:8px; padding:6px 10px; font-weight:700; letter-spacing:.6px;
+      border-radius:999px; border:1px solid rgba(255,255,255,.6); box-shadow:0 0 10px rgba(255,255,255,.35);
+      animation:pulse 2.8s ease-in-out infinite;
     }
-    .container{width:min(1100px, 92%); margin: 28px auto 108px;}
+
+    .container{width:min(1100px, 92%); margin:28px auto 108px}
+
     .card{
-      margin:32px 0;
-      padding:34px 22px;
-      background: var(--card);
-      border-radius:16px;
+      margin:32px 0; padding:34px 22px; background:var(--card); border-radius:16px;
       border:2px solid rgba(255,221,0,.32);
-      box-shadow:0 0 10px rgba(255,221,0,.28),inset 0 0 16px rgba(255,255,255,.16);
-      animation: neonBox 4s ease-in-out infinite;
-      text-align:center;
+      box-shadow:0 0 10px rgba(255,221,0,.28), inset 0 0 16px rgba(255,255,255,.16);
+      animation:neonBox 4s ease-in-out infinite; text-align:center;
     }
     .card h2{font-size:clamp(22px, 3.2vw, 32px); margin-bottom:10px}
     .lead{color:#f9f9f9; margin:0 auto 16px; max-width:760px; font-size:clamp(15px, 2.3vw, 18px)}
-    .countdown{
-      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
-      margin:14px 0 6px;
-    }
-    .timebox{
-      min-width:86px;
-      padding:12px 10px;
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(255,255,255,.32);
-      border-radius:12px;
-      box-shadow: inset 0 0 10px rgba(255,255,255,.15);
-    }
-    .timebox .num{font-weight:800; font-size:24px}
-    .timebox .lbl{color:#ccc; font-size:12px; letter-spacing:.6px}
+
+    .countdown{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:14px 0 6px }
+    .timebox{ min-width:70px; padding:10px 8px; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.32); border-radius:12px; box-shadow:inset 0 0 10px rgba(255,255,255,.15) }
+    .timebox .num{font-weight:800; font-size:20px}
+    .timebox .lbl{color:#ccc; font-size:11px; letter-spacing:.6px}
+
     .btns{margin-top:18px}
     .button{
-      display:inline-block;
-      background:var(--btn-bg);
-      border:1.5px solid rgba(255,221,0,.75);
-      color:#000;
-      font-weight:700;
-      padding:14px 22px;
-      border-radius:12px;
-      margin:4px 6px;
-      text-decoration:none;
-      box-shadow:0 0 10px rgba(255,221,0,.45),inset 0 0 12px rgba(255,255,255,.22);
+      display:inline-block; background:var(--btn-bg); border:1.5px solid rgba(255,221,0,.75);
+      color:#000; font-weight:700; padding:10px 18px; border-radius:12px; margin:4px 6px; text-decoration:none;
+      font-size:14px; box-shadow:0 0 10px rgba(255,221,0,.45), inset 0 0 12px rgba(255,255,255,.22);
       transition: transform .15s ease, box-shadow .2s ease;
     }
-    .button:hover{ transform: translateY(-1px) scale(1.02);}
-    .social-links{
-      margin-top:16px;
-      display:flex;
-      justify-content:center;
-      gap:16px;
-    }
-    .social-links a{
-      font-size:22px;
-      color:var(--fg);
-      text-shadow:0 0 6px var(--neon), 0 0 12px var(--neon2);
-      transition: transform .2s ease;
-    }
-    .social-links a:hover{ transform: scale(1.2); }
+    .button:hover{ transform: translateY(-1px) scale(1.02); }
 
+    .social-links{ margin-top:16px; display:flex; justify-content:center; gap:16px }
+    .social-links a{ font-size:20px; color:var(--fg); text-shadow:0 0 6px var(--neon), 0 0 12px var(--neon2); transition: transform .2s ease }
+    .social-links a:hover{ transform: scale(1.2) }
+
+    /* ===== PREVIEW GRID (6 kolom di desktop) ===== */
+    .preview{ padding:14px 0 8px }
+    .preview-title{ margin:10px 0 8px; font-size:15px; letter-spacing:.3px; text-align:center; text-shadow:0 0 10px rgba(255,221,0,.35) }
+
+    .launch-grid{ display:grid; gap:8px; grid-template-columns:repeat(2,1fr) }
+    /* HP kecil: 3 kolom */
+    @media(max-width:480px){ .launch-grid{ grid-template-columns:repeat(3,1fr) } }
+    /* Tablet: 4 kolom */
+    @media(min-width:640px){ .launch-grid{ grid-template-columns:repeat(4,1fr) } }
+    /* Desktop: 6 kolom */
+    @media(min-width:1024px){ .launch-grid{ grid-template-columns:repeat(6,1fr) } }
+
+    .item{
+      background:var(--card); border:1px solid var(--stroke); border-radius:10px; overflow:hidden;
+      transition:.2s; text-align:center;
+    }
+    .item:hover{ transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,221,0,.12) }
+    .thumb{ aspect-ratio:1/1; background:#0d0d0d; display:flex; align-items:center; justify-content:center }
+    .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
+
+    .name{ font-size:11px; margin:6px 6px 2px; font-weight:800 }
+    .meta{ font-size:9px; color:#cfcfcf; margin:0 6px 6px }
+    .price{
+      margin:0 0 6px; font-weight:900; font-size:11px; color:var(--neon);
+      background:linear-gradient(180deg, rgba(255,221,0,.16), rgba(255,255,255,.06));
+      display:inline-block; padding:3px 6px; border-radius:8px; border:1px solid rgba(255,221,0,.35);
+    }
+
+    /* Footer kecil + auto-hide */
     footer{
       position:fixed; left:0; right:0; bottom:0;
       background: linear-gradient(180deg, rgba(255,221,0,.12), rgba(0,0,0,.85));
-      border-top:1px solid rgba(255,255,255,.25);
-      color:var(--fg);
-      text-align:center; padding:10px 12px;
+      border-top:1px solid rgba(255,255,255,.25); color:var(--fg);
+      text-align:center; padding:4px 8px; font-size:10px;
+      transition: transform 0.3s ease;
     }
-    @keyframes neonText{
-      0%,100%{ text-shadow: 0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon); }
-      50%{ text-shadow: 0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon); }
-    }
-    @keyframes neonBox{
-      0%,100%{ box-shadow: 0 0 10px var(--neon), inset 0 0 16px var(--neon2) }
-      50%{   box-shadow: 0 0 18px var(--neon), inset 0 0 26px var(--neon2) }
-    }
+
+    @keyframes neonText{ 0%,100%{ text-shadow:0 0 6px var(--neon),0 0 18px var(--neon2),0 0 36px var(--neon) } 50%{ text-shadow:0 0 4px var(--neon),0 0 14px var(--neon2),0 0 30px var(--neon) } }
+    @keyframes neonBox{ 0%,100%{ box-shadow:0 0 10px var(--neon), inset 0 0 16px var(--neon2) } 50%{ box-shadow:0 0 18px var(--neon), inset 0 0 26px var(--neon2) } }
     @keyframes pulse{ 0%,100%{ box-shadow:0 0 8px rgba(255,255,255,.5) } 50%{ box-shadow:0 0 16px rgba(255,255,255,.8) } }
   </style>
 </head>
@@ -149,9 +123,64 @@
 
   <header>
     <div class="brand">TRIVIAL</div>
-    <p class="tagline">Langkah baru dalam dunia streetwear. Kaos kaki yang dirancang untuk gaya dan performa.</p>
+    <p class="tagline">Langkah baru dalam dunia streetwear. di design untuk gaya dan performa.</p>
     <div class="badge">SEGERA HADIR</div>
   </header>
+
+  <!-- PREVIEW PRODUK (6 kartu, disamarkan) -->
+  <section id="launch-preview" class="container preview">
+    <h3 class="preview-title">Sneak Peek Koleksi Perdana</h3>
+
+    <div class="launch-grid">
+      <article class="item">
+        <div class="thumb"><img src="assets/products/core-crew-black.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+
+      <article class="item">
+        <div class="thumb"><img src="assets/products/stripe-athletic-yellow.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+
+      <article class="item">
+        <div class="thumb"><img src="assets/products/lowcut-white.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+
+      <article class="item">
+        <div class="thumb"><img src="assets/products/performance-ankle-grey.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+
+      <!-- ITEM 5 -->
+      <article class="item">
+        <div class="thumb"><img src="assets/products/ribbed-midnight.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+
+      <!-- ITEM 6 -->
+      <article class="item">
+        <div class="thumb"><img src="assets/products/urban-camo.jpg" alt="Produk Rahasia"></div>
+        <h4 class="name">*****</h4>
+        <div class="meta">*****</div>
+        <div class="price">Rp*****</div>
+      </article>
+    </div>
+
+    <p style="color:#b9b9b9; font-size:10px; text-align:center; margin:8px 0 0;">
+      *Foto dan harga dapat berubah saat peluncuran.
+    </p>
+  </section>
 
   <div class="container">
     <section class="card">
@@ -179,7 +208,7 @@
     </section>
   </div>
 
-  <footer>
+  <footer id="site-footer">
     <p>&copy; 2025 TRIVIAL — Semua Hak Dilindungi</p>
   </footer>
 
@@ -204,11 +233,20 @@
       m.textContent = pad(mins);
       s.textContent = pad(secs);
     }
-    tick();
-    setInterval(tick, 1000);
+    tick(); setInterval(tick, 1000);
+
+    // Footer hide/show on scroll
+    const footer = document.getElementById("site-footer");
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        footer.style.transform = "translateY(100%)";
+      } else {
+        footer.style.transform = "translateY(0)";
+      }
+      lastScrollY = window.scrollY;
+    });
   </script>
 
 </body>
 </html>
-
-
